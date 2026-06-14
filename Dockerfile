@@ -1,4 +1,4 @@
-FROM alpine:3.20
+FROM alpine:3.24
 WORKDIR /src
 COPY . .
 LABEL org.opencontainers.image.source="https://github.com/mafzalkalwardev/fmcsa-safer-scraper"
