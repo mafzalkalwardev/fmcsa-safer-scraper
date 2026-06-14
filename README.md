@@ -42,4 +42,3 @@ Clone the repository and follow project-specific setup in docs.
 ## Screenshots
 
 ![fmcsa-safer-scraper dashboard](docs/screenshots/app.png)
-
