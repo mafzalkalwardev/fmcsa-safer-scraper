@@ -13,6 +13,11 @@ Documented · MIT licensed · Maintained
 
 ---
 
+## Screenshots
+
+![Application screenshot](docs/screenshots/app.png)
+
+
 ## 🐍 Contribution graph
 
 <picture>
