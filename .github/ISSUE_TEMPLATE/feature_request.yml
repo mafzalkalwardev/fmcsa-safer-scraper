@@ -1,0 +1,35 @@
+name: Feature request
+description: A change to the QCMobile Actor, the root license entry, or the docs.
+title: "Request: "
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The lookup in `apify-actor/` calls the official FMCSA QCMobile API only. Describe the behavior you want against that API, `run.py`, or the docs.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - apify-actor input, client, or dataset row
+        - Apify deploy or Docker
+        - run.py / INDUS license check
+        - Tests or CI
+        - Documentation
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is missing
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What should change
+      description: Name the file or command if you know it (`fmcsa_actor/client.py`, `python -m fmcsa_actor`, `.github/workflows/ci.yml`).
+    validations:
+      required: true

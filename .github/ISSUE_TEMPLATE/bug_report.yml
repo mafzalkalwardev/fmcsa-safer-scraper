@@ -1,0 +1,50 @@
+name: Bug report
+description: A lookup, test, license check, or workflow did something wrong.
+title: "Bug: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not paste an FMCSA WebKey, an INDUS license token, `INPUT.json`, or anything from `apify-actor/storage/`.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Where it happened
+      options:
+        - apify-actor (QCMobile lookup)
+        - run.py / INDUS license check
+        - Docker image or GitHub Actions
+        - Documentation
+    validations:
+      required: true
+  - type: textarea
+    id: command
+    attributes:
+      label: Command you ran
+      description: Copy the command. Examples that exist in this repo are below.
+      placeholder: |
+        cd apify-actor
+        python -m unittest discover -s tests -v
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: What happened
+      description: Paste the error text. Remove any WebKey if a URL echoed it.
+    validations:
+      required: true
+  - type: input
+    id: python
+    attributes:
+      label: Python version
+      description: CI uses 3.12. The Actor image is apify/actor-python:3.14.
+      placeholder: "3.12"

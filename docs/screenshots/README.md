@@ -1,11 +1,5 @@
 # Screenshots
 
-Add PNG or JPG captures of the application here, then update the main README:
+`app.png` is a public FMCSA SAFER company snapshot. The root README shows it next to the QCMobile dataset sample.
 
-```markdown
-## Screenshots
-
-![App screenshot](docs/screenshots/app.png)
-```
-
-Recommended: 1280×720 or 800×450, dark/light as appropriate.
+The Actor in `apify-actor/` does not read that page. It calls `https://mobile.fmcsa.dot.gov/qc/services/` and writes JSON dataset items. Do not describe `app.png` as a capture of this repository's program.

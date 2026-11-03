@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Security report
+    url: https://github.com/mafzalkalwardev/fmcsa-safer-scraper/security/policy
+    about: Security-sensitive problems stay off the public issue tracker. See SECURITY.md.
