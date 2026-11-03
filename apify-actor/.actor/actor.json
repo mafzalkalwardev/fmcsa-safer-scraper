@@ -1,0 +1,15 @@
+{
+    "$schema": "https://apify.com/schemas/v1/actor.ide.json",
+    "actorSpecification": 1,
+    "name": "fmcsa-carrier-lookup",
+    "title": "FMCSA Carrier Lookup",
+    "description": "Look up a motor carrier by USDOT number, MC/docket number, or name and return authority status, operating status, insurance, and safety rating from the official FMCSA QCMobile API.",
+    "version": "1.0",
+    "buildTag": "latest",
+    "inputSchema": "./input_schema.json",
+    "outputSchema": "./output_schema.json",
+    "storages": {
+        "dataset": "./dataset_schema.json"
+    },
+    "dockerfile": "../Dockerfile"
+}

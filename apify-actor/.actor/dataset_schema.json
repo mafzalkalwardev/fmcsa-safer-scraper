@@ -1,0 +1,184 @@
+{
+    "actorSpecification": 1,
+    "fields": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "additionalProperties": true,
+        "required": ["found", "queryType", "query", "source", "sourceUrl"],
+        "properties": {
+            "found": {
+                "type": "boolean",
+                "title": "Found",
+                "description": "True when the official FMCSA API returned a carrier for this query.",
+                "example": true
+            },
+            "queryType": {
+                "type": "string",
+                "title": "Query type",
+                "enum": ["dot", "docket", "name"],
+                "example": "dot"
+            },
+            "query": {
+                "type": "string",
+                "title": "Query",
+                "description": "USDOT number, docket number, or carrier name that was searched.",
+                "example": "44110"
+            },
+            "message": {
+                "type": ["string", "null"],
+                "title": "Message",
+                "description": "Set when the API did not return a carrier."
+            },
+            "dotNumber": { "type": ["string", "null"], "title": "USDOT number", "example": "1000001" },
+            "legalName": { "type": ["string", "null"], "title": "Legal name", "example": "EXAMPLE HAULING LLC" },
+            "dbaName": { "type": ["string", "null"], "title": "DBA name" },
+            "docketNumbers": {
+                "type": "array",
+                "title": "Docket numbers",
+                "description": "MC, FF, or MX docket numbers returned by the official authority endpoint.",
+                "items": { "type": "string" },
+                "example": ["MC-100001"]
+            },
+            "allowedToOperate": {
+                "type": ["string", "null"],
+                "title": "Allowed to operate",
+                "description": "Official FMCSA flag. Y means the carrier is allowed to operate. N means it is not.",
+                "example": "Y"
+            },
+            "operatingStatus": {
+                "type": ["string", "null"],
+                "title": "Operating status",
+                "example": "Allowed to operate"
+            },
+            "statusCode": {
+                "type": ["string", "null"],
+                "title": "Census status code",
+                "description": "A is active. I is inactive.",
+                "example": "A"
+            },
+            "statusLabel": { "type": ["string", "null"], "title": "Census status", "example": "Active" },
+            "outOfServiceDate": { "type": ["string", "null"], "title": "Out-of-service date" },
+            "carrierOperationCode": { "type": ["string", "null"], "title": "Operation code" },
+            "carrierOperation": { "type": ["string", "null"], "title": "Operation", "example": "Interstate" },
+            "commonAuthorityStatus": {
+                "type": ["string", "null"],
+                "title": "Common authority",
+                "description": "A active, I inactive, N none.",
+                "example": "A"
+            },
+            "commonAuthorityStatusLabel": { "type": ["string", "null"], "title": "Common authority label" },
+            "contractAuthorityStatus": { "type": ["string", "null"], "title": "Contract authority", "example": "N" },
+            "contractAuthorityStatusLabel": { "type": ["string", "null"], "title": "Contract authority label" },
+            "brokerAuthorityStatus": { "type": ["string", "null"], "title": "Broker authority", "example": "N" },
+            "brokerAuthorityStatusLabel": { "type": ["string", "null"], "title": "Broker authority label" },
+            "authorityRecords": {
+                "type": "array",
+                "title": "Authority records",
+                "description": "Per-docket operating authority from the official /authority endpoint.",
+                "items": { "type": "object" }
+            },
+            "bipdInsuranceOnFile": {
+                "type": ["string", "null"],
+                "title": "BIPD insurance on file",
+                "description": "Bodily injury and property damage insurance on file with FMCSA, in thousands of U.S. dollars.",
+                "example": "750"
+            },
+            "bipdInsuranceOnFileUsd": { "type": ["integer", "null"], "title": "BIPD on file (USD)", "example": 750000 },
+            "bipdInsuranceRequired": { "type": ["string", "null"], "title": "BIPD required", "example": "Y" },
+            "bipdInsuranceRequiredLabel": { "type": ["string", "null"], "title": "BIPD required label" },
+            "bipdRequiredAmount": {
+                "type": ["string", "null"],
+                "title": "BIPD required amount",
+                "description": "Required BIPD amount in thousands of U.S. dollars.",
+                "example": "750"
+            },
+            "bipdRequiredAmountUsd": { "type": ["integer", "null"], "title": "BIPD required (USD)", "example": 750000 },
+            "cargoInsuranceOnFile": { "type": ["string", "null"], "title": "Cargo insurance on file", "example": "0" },
+            "cargoInsuranceOnFileUsd": { "type": ["integer", "null"], "title": "Cargo on file (USD)" },
+            "cargoInsuranceRequired": { "type": ["string", "null"], "title": "Cargo insurance required" },
+            "cargoInsuranceRequiredLabel": { "type": ["string", "null"], "title": "Cargo required label" },
+            "bondInsuranceOnFile": { "type": ["string", "null"], "title": "Bond / trust on file", "example": "0" },
+            "bondInsuranceOnFileUsd": { "type": ["integer", "null"], "title": "Bond on file (USD)" },
+            "bondInsuranceRequired": { "type": ["string", "null"], "title": "Bond required" },
+            "bondInsuranceRequiredLabel": { "type": ["string", "null"], "title": "Bond required label" },
+            "safetyRating": {
+                "type": ["string", "null"],
+                "title": "Safety rating",
+                "description": "S satisfactory, C conditional, U unsatisfactory. Null means FMCSA has not assigned a rating.",
+                "example": "S"
+            },
+            "safetyRatingLabel": {
+                "type": ["string", "null"],
+                "title": "Safety rating label",
+                "description": "Satisfactory, Conditional, Unsatisfactory, or Not rated when FMCSA has not assigned a rating.",
+                "example": "Satisfactory"
+            },
+            "safetyRatingDate": { "type": ["string", "null"], "title": "Safety rating date" },
+            "safetyReviewDate": { "type": ["string", "null"], "title": "Safety review date" },
+            "safetyReviewType": { "type": ["string", "null"], "title": "Safety review type" },
+            "phyStreet": { "type": ["string", "null"], "title": "Street" },
+            "phyCity": { "type": ["string", "null"], "title": "City" },
+            "phyState": { "type": ["string", "null"], "title": "State" },
+            "phyZipcode": { "type": ["string", "null"], "title": "ZIP" },
+            "phyCountry": { "type": ["string", "null"], "title": "Country" },
+            "totalPowerUnits": { "type": ["integer", "null"], "title": "Power units" },
+            "totalDrivers": { "type": ["integer", "null"], "title": "Drivers" },
+            "source": {
+                "type": "string",
+                "title": "Source",
+                "description": "The record was read from the official FMCSA API, not copied from the SAFER website.",
+                "example": "FMCSA QCMobile API"
+            },
+            "sourceUrl": {
+                "type": "string",
+                "title": "Source URL",
+                "example": "https://mobile.fmcsa.dot.gov/qc/services/"
+            },
+            "retrievalDate": {
+                "type": ["string", "null"],
+                "title": "Retrieved",
+                "description": "retrievalDate returned by the official FMCSA API."
+            }
+        }
+    },
+    "views": {
+        "overview": {
+            "title": "Carriers",
+            "transformation": {
+                "fields": [
+                    "legalName",
+                    "dotNumber",
+                    "docketNumbers",
+                    "operatingStatus",
+                    "commonAuthorityStatusLabel",
+                    "contractAuthorityStatusLabel",
+                    "brokerAuthorityStatusLabel",
+                    "bipdInsuranceOnFileUsd",
+                    "cargoInsuranceOnFileUsd",
+                    "bondInsuranceOnFileUsd",
+                    "safetyRatingLabel",
+                    "safetyRatingDate",
+                    "phyState"
+                ]
+            },
+            "display": {
+                "component": "table",
+                "properties": {
+                    "legalName": { "label": "Legal name", "format": "text" },
+                    "dotNumber": { "label": "USDOT", "format": "text" },
+                    "docketNumbers": { "label": "Dockets", "format": "array" },
+                    "operatingStatus": { "label": "Operating status", "format": "text" },
+                    "commonAuthorityStatusLabel": { "label": "Common authority", "format": "text" },
+                    "contractAuthorityStatusLabel": { "label": "Contract authority", "format": "text" },
+                    "brokerAuthorityStatusLabel": { "label": "Broker authority", "format": "text" },
+                    "bipdInsuranceOnFileUsd": { "label": "BIPD on file (USD)", "format": "number" },
+                    "cargoInsuranceOnFileUsd": { "label": "Cargo on file (USD)", "format": "number" },
+                    "bondInsuranceOnFileUsd": { "label": "Bond on file (USD)", "format": "number" },
+                    "safetyRatingLabel": { "label": "Safety rating", "format": "text" },
+                    "safetyRatingDate": { "label": "Rating date", "format": "text" },
+                    "phyState": { "label": "State", "format": "text" }
+                }
+            }
+        }
+    }
+}

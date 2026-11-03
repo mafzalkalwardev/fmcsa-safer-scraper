@@ -1,0 +1,9 @@
+storage/
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+INPUT.json
+.pytest_cache/
+.mypy_cache/

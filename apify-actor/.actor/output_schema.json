@@ -1,0 +1,13 @@
+{
+    "actorOutputSchemaVersion": 1,
+    "title": "FMCSA carrier records",
+    "description": "Authority status, operating status, insurance filings, and safety rating for each carrier, read from the official FMCSA QCMobile API.",
+    "properties": {
+        "carriers": {
+            "type": "string",
+            "title": "Carriers",
+            "description": "Dataset of carrier records from https://mobile.fmcsa.dot.gov/qc/services/.",
+            "template": "{{links.apiDefaultDatasetUrl}}/items"
+        }
+    }
+}
