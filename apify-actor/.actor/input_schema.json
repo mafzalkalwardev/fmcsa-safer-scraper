@@ -1,0 +1,51 @@
+{
+    "$schema": "https://apify.com/schemas/v1/input.ide.json",
+    "title": "FMCSA carrier lookup",
+    "description": "Look up carriers through the official FMCSA QCMobile API. Provide your own free WebKey and at least one of USDOT number, MC/docket number, or carrier name.",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "webKey": {
+            "title": "FMCSA WebKey",
+            "type": "string",
+            "description": "Your free FMCSA QCMobile WebKey. Create one with Login.gov at https://mobile.fmcsa.dot.gov/QCDevsite/docs/getStarted. Apify stores this value encrypted. It is sent only to the official FMCSA API.",
+            "editor": "textfield",
+            "isSecret": true,
+            "minLength": 1
+        },
+        "dotNumber": {
+            "title": "USDOT number",
+            "type": "string",
+            "description": "U.S. DOT number. Digits only; a leading USDOT label is ignored. Example from the FMCSA docs: 44110.",
+            "editor": "textfield",
+            "example": "44110",
+            "sectionCaption": "Carrier search",
+            "sectionDescription": "Provide a USDOT number, an MC/docket number, a legal or DBA name, or any combination. Each match is saved as one dataset item."
+        },
+        "docketNumber": {
+            "title": "MC / docket number",
+            "type": "string",
+            "description": "Motor carrier docket number. MC, FF, and MX prefixes are optional (MC-1515 and 1515 are the same lookup).",
+            "editor": "textfield",
+            "example": "MC-1515"
+        },
+        "carrierName": {
+            "title": "Carrier name",
+            "type": "string",
+            "description": "Legal name or DBA name. The official API returns at most 50 matches per request. Use maximum name results to keep fewer of them.",
+            "editor": "textfield",
+            "example": "greyhound"
+        },
+        "maxResults": {
+            "title": "Maximum name results",
+            "type": "integer",
+            "description": "How many name-search matches to save. Ignored for USDOT and docket lookups. The official API page size is 50.",
+            "editor": "number",
+            "default": 10,
+            "minimum": 1,
+            "maximum": 50,
+            "example": 10
+        }
+    },
+    "required": ["webKey"]
+}

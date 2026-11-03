@@ -1,0 +1,2 @@
+# Apify SDK for Python. https://docs.apify.com/sdk/python
+apify >= 4.0.0, < 5.0.0
