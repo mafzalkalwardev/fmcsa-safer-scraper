@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import unittest
 from pathlib import Path
 
@@ -23,12 +24,17 @@ class OfficialApiOnlyTests(unittest.TestCase):
     def test_actor_metadata_points_at_the_official_api(self) -> None:
         readme = (ACTOR_ROOT / "README.md").read_text(encoding="utf-8")
         actor = (ACTOR_ROOT / ".actor" / "actor.json").read_text(encoding="utf-8")
-        schema = (ACTOR_ROOT / ".actor" / "input_schema.json").read_text(encoding="utf-8")
+        schema_text = (ACTOR_ROOT / ".actor" / "input_schema.json").read_text(encoding="utf-8")
         self.assertIn("official FMCSA", readme)
         self.assertIn("https://mobile.fmcsa.dot.gov/qc/services/", readme)
         self.assertIn("QCMobile", actor)
-        self.assertIn('"isSecret": true', schema)
-        self.assertIn("webKey", schema)
+        self.assertIn('"isSecret": true', schema_text)
+        self.assertIn("webKey", schema_text)
+        schema = json.loads(schema_text)
+        web_key = schema["properties"]["webKey"]
+        self.assertTrue(web_key["isSecret"])
+        for forbidden in ("minLength", "maxLength", "pattern", "default"):
+            self.assertNotIn(forbidden, web_key)
 
 
 if __name__ == "__main__":
