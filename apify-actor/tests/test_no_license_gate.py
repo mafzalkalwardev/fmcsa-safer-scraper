@@ -28,6 +28,13 @@ class OfficialApiOnlyTests(unittest.TestCase):
         self.assertIn("official FMCSA", readme)
         self.assertIn("https://mobile.fmcsa.dot.gov/qc/services/", readme)
         self.assertIn("QCMobile", actor)
+        actor_json = json.loads(actor)
+        self.assertEqual(actor_json["output"], "./output_schema.json")
+        output_schema = json.loads((ACTOR_ROOT / ".actor" / "output_schema.json").read_text(encoding="utf-8"))
+        self.assertEqual(output_schema["actorOutputSchemaVersion"], 1)
+        carriers = output_schema["properties"]["carriers"]
+        self.assertEqual(carriers["type"], "string")
+        self.assertIn("template", carriers)
         self.assertIn('"isSecret": true', schema_text)
         self.assertIn("webKey", schema_text)
         schema = json.loads(schema_text)
