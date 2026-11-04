@@ -10,8 +10,7 @@
             "type": "string",
             "description": "Your free FMCSA QCMobile WebKey. Create one with Login.gov at https://mobile.fmcsa.dot.gov/QCDevsite/docs/getStarted. Apify stores this value encrypted. It is sent only to the official FMCSA API.",
             "editor": "textfield",
-            "isSecret": true,
-            "minLength": 1
+            "isSecret": true
         },
         "dotNumber": {
             "title": "USDOT number",
